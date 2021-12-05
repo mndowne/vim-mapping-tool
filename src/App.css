@@ -1,38 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&family=Ubuntu+Mono&display=swap');
+
 .App {
-  text-align: center;
+    text-align: center;
+    margin: auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.vim-line {
+    font-size: 1.2rem;
+    text-align: left;
+    color: rgb(100,100,100);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.vim-comment {
+    color: rgb(100,100,100);
+    font-style: italic;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.delete-line {
 }
 
-.App-link {
-  color: #61dafb;
+.user-entry {
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.user-entry-form {
+}
+
+.vim-wrapper {
+    font-family: 'Ubuntu Mono', monospace;
+    background-color: rgb(30,20,10);
+    border: 2px solid rgb(150,150,150);
+    border-radius: 15px;
+    width: 50rem;
+    margin: 2rem auto;
+}
+
+.command-command {
+    color: white;
+}
+
+.command-mode {
+    color: rgb(240,110,160);
+}
+
+.command-keybind {
+    color: yellow;
 }

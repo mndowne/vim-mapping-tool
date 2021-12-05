@@ -1,8 +1,12 @@
-const UserEntry = ({onCommandSubmition}) => {
+import React, {useState} from 'react';
+
+
+const UserEntry = ({onCommandSubmition, inputChecker}) => {
 
     const [enteredMode, setEnteredMode] = useState('');
     const [enteredKeybind, setEnteredKeybind] = useState('');
-    const [enteredCommand, setEnteredCommand] = usestate('');
+    const [enteredCommand, setEnteredCommand] = useState('');
+    const [enteredComment, setEnteredComment] = useState('');
 
     const keybindHandler = (e) => {
         setEnteredKeybind(e.target.value);
@@ -12,40 +16,64 @@ const UserEntry = ({onCommandSubmition}) => {
         setEnteredCommand(e.target.value);
     }
 
-    const commandHandler = (e) => {
+    const modeHandler = (e) => {
+        setEnteredMode(e.target.value);
+    }
+
+    const commentHandler = (e) => {
+        setEnteredComment(e.target.value);
+    }
+
+    const cancelHandler = (e) => {
         setEnteredCommand('');
         setEnteredKeybind('');
         setEnteredMode('');
+        setEnteredComment('');
     }
 
     const submitHandler = (e) => {
         e.preventDefault();
 
-        const commandData = {
+        const newCommandData = {
+            id: Math.random().toString(),
             mode: enteredMode,
             keybind: enteredKeybind,
-            command: enteredCommand
+            command: enteredCommand,
+            comment: enteredComment
         }
+
+        if ( inputChecker(newCommandData) ) {
+            onCommandSubmition(newCommandData);
+        };
+        setEnteredCommand('');
+        setEnteredKeybind('');
+        setEnteredMode('');
+        setEnteredComment('');
     }
 
     return (
         <div className="user-entry">
-            <form className="user-entry-form" onSubimit={submitHandler}>
-                <select name="mode" id="mode">
-                    <option value="Normal">nnoremap</option>
-                    <option value="Visual">xnoremap</option>
-                    <option value="Insert">inoremap</option>
-                    <option value="Command">:command</option>
+            <form className="user-entry-form" onSubmit={submitHandler}>
+                <select value={enteredMode} onChange={modeHandler}>
+                    <option value="nnoremap">Normal</option>
+                    <option value="xnoremap">Visual</option>
+                    <option value="inoremap">Ignore</option>
+                    <option value=":command">Command</option>
                 </select>
                 <input
-                    value={keybind}
+                    value={enteredKeybind}
                     type='text'
                     onChange={keybindHandler}
                 />
                 <input
-                    value={command}
+                    value={enteredCommand}
                     type='text'
                     onChange={commandHandler}
+                />
+                <input
+                    value={enteredComment}
+                    type='text'
+                    onChange={commentHandler}
                 />
                 <button type="button" onClick={cancelHandler}>Cancel</button>
                 <button type="submit">Add Command</button>
