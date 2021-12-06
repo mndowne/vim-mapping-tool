@@ -6,8 +6,8 @@ const MockVimrc = ({ commandData }) => {
 
     return (
         <ul className="vim-wrapper">
-            {commandData.map( command =>
-                <VimCommands key={command.id} command={command} />
+            {commandData.map( (command, index) =>
+                <VimCommands key={command.id} command={command} commandIndex={index}/>
             )}
         </ul>
     );

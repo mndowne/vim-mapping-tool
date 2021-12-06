@@ -54,22 +54,26 @@ const UserEntry = ({onCommandSubmition, inputChecker}) => {
     return (
         <div className="user-entry">
             <form className="user-entry-form" onSubmit={submitHandler}>
+                <div>Editor Mode: </div>
                 <select value={enteredMode} onChange={modeHandler}>
                     <option value="nnoremap">Normal</option>
                     <option value="xnoremap">Visual</option>
-                    <option value="inoremap">Ignore</option>
+                    <option value="inoremap">Insert</option>
                     <option value=":command">Command</option>
                 </select>
+                <div>Shortcut Keybind: </div>
                 <input
                     value={enteredKeybind}
                     type='text'
                     onChange={keybindHandler}
                 />
+                <div>Vim Command to be executed: </div>
                 <input
                     value={enteredCommand}
                     type='text'
                     onChange={commandHandler}
                 />
+                <div>Vimrc comment</div>
                 <input
                     value={enteredComment}
                     type='text'

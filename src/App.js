@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import UserEntry from './UserEntry.js'
 import MockVimrc from './MockVimrc.js'
+import InvalidMessageAlert from './InvalidMessageAlert.js'
 
     const exampleCommandData = [
     {
@@ -23,10 +24,22 @@ import MockVimrc from './MockVimrc.js'
 function App() {
 
     const [commandData, setCommandData] = useState(exampleCommandData);
+    const [invalidMessage, setInvalidMessage] = useState('');
     
-    const inputChecker = () => {
+    const inputChecker = (newCommandData) => {
     //check that the input entered by the user is valid
-        console.log('Hello');
+        if ( newCommandData.keybind.includes(' '))
+        {
+            setInvalidMessage('Can not include a space in your keybinds. please use <Space> instead.');
+            return(false);
+        }
+        if ( newCommandData.command.includes(' '))
+        {
+            setInvalidMessage('Can not include a space in your command');
+            return(false);
+        }
+        console.log('No space');
+            setInvalidMessage('');
         return(true);
     }
 
@@ -36,10 +49,16 @@ function App() {
         });
     }
 
+    const invalidMessageOkay = () => {
+        setInvalidMessage('');
+    }
+
+
   return (
     <div className="App">
         <UserEntry onCommandSubmition={onCommandSubmition} inputChecker={inputChecker}/>
         <MockVimrc commandData={commandData} />
+        {invalidMessage.length > 0 &&   <InvalidMessageAlert invalidMessage={invalidMessage} invalidMessageOkay={invalidMessageOkay}/> }
     </div>
   );
 }

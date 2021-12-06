@@ -11,6 +11,9 @@
     color: rgb(100,100,100);
 }
 
+.vim-line > p {
+    margin: 2px;
+}
 .vim-comment {
     color: rgb(100,100,100);
     font-style: italic;
@@ -20,9 +23,37 @@
 }
 
 .user-entry {
+    margin: 2rem auto;
+    padding: 1rem;
+    width: 90%;
+    max-width: 50rem;
+    background-color: rgb(30,20,10);
+    border: 2px solid rgb(150,150,150);
+    border-radius: 15px;
 }
 
-.user-entry-form {
+.user-entry-form > input ,
+.user-entry-form > Select {
+    display: block;
+    width: 100%;
+    border: 1ps solid #ccc;
+    padding: 0.15rem;
+    margin-bottom: 0.5rem;
+    font: inherit;
+}
+
+.user-entry-form > div {
+    color: rgb(200,205,210);
+    font-size: 1.5rem;
+    text-align: left;
+}
+
+.user-entry-form > button {
+    font-size: 1.4rem;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .vim-wrapper {
@@ -44,4 +75,67 @@
 
 .command-keybind {
     color: yellow;
+}
+
+.invalid-message {
+    backdrop-filter: blur(6px);
+    position: fixed;
+    background-color: rgba(10,10,10,0.8);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.invalid-message-box {
+    width: 50rem;
+    margin: auto;
+    margin-top: 30px;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: white;
+}
+
+.invalid-message-header {
+    border-top-left-radius: 13px;
+    border-top-right-radius: 13px;
+    background-color: rgb(255,100,255);
+    padding: 10px;
+    position: relative;
+    top: -10px;
+    left: -10px;
+    width: 100%;
+    font-size: 1.6rem;
+}
+
+.invalid-message-text {
+    padding: 10px;
+    width: auto;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.invalid-message-text > p {
+    width: 90%;
+    text-align: left;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.invalid-message-text > button {
+    width: 10%;
+    vertical-align: middle;
+    right: 0;
+    display: inline-block;
+    font-size: 1.2rem;
+    background-color: rgb(255,100,255);
+    border-radius: 5px
+}
+
+
+.invalid-message-text > button:hover {
+    background-color: rgb(200,80,200);
+    cursor: pointer;
 }
